@@ -136,18 +136,7 @@ def main():
     # Check backend connection status
     if not test_backend_connection():
         st.error("⚠️ Backend is not running. Please start the backend server first.")
-        if st.button("🔄 Try to start backend"):
-            try:
-                import subprocess
-                subprocess.Popen(
-                    ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"],
-                    cwd="c:\\Users\\kisho\\tailor_talk"
-                )
-                st.success("✅ Backend started! Please refresh the page.")
-                time.sleep(2)
-                st.rerun()
-            except Exception as e:
-                st.error(f"Failed to start backend: {str(e)}")
+        st.info("To start the backend, run: `uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000`")
         return
     
     # Main app interface
@@ -159,11 +148,18 @@ def main():
     
     # Display chat messages
     for message in st.session_state.messages:
-        if not isinstance(message, dict):
-            # Skip or log non-dict items
+        if isinstance(message, dict):
+            # Handle dictionary format
+            role = message.get("role", "user")
+            content = message.get("content", "")
+        elif isinstance(message, (list, tuple)) and len(message) >= 2:
+            # Handle tuple/list format
+            role = message[0]
+            content = message[1]
+        else:
+            # Skip invalid message formats
             continue
-        role = message["role"]
-        content = message["content"]
+            
         with st.chat_message(role):
             st.markdown(f"<div class='{role}-message'>{content}</div>", unsafe_allow_html=True)
     
