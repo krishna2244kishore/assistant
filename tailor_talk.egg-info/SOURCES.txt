@@ -1,0 +1,15 @@
+README.md
+setup.py
+backend/__init__.py
+backend/agent.py
+backend/agent_new.py
+backend/api_utils.py
+backend/auth.py
+backend/calendar_utils.py
+backend/config.py
+backend/main.py
+tailor_talk.egg-info/PKG-INFO
+tailor_talk.egg-info/SOURCES.txt
+tailor_talk.egg-info/dependency_links.txt
+tailor_talk.egg-info/requires.txt
+tailor_talk.egg-info/top_level.txt

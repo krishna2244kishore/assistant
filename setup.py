@@ -1,0 +1,19 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="tailor_talk",
+    version="1.0.0",
+    packages=find_packages(),
+    install_requires=[
+        'fastapi>=0.68.0',
+        'uvicorn>=0.15.0',
+        'pydantic>=1.8.0',
+        'python-dateutil>=2.8.2',
+        'python-dotenv>=0.19.0',
+        'spacy>=3.2.0',
+        'pytz>=2021.3',
+        'requests>=2.26.0',
+        'streamlit>=1.22.0',
+    ],
+    python_requires='>=3.7',
+)
